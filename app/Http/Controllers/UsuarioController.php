@@ -89,21 +89,4 @@ class UsuarioController extends Controller
         ->with('success', 'Registro eliminado :D');
     }
 
-    //Obtener libros mediante API
-    public function home(){
-        //Manejar la respuesta del API
-        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
-            'q' => 'subjet:fiction', 
-            'maxResults' => 12, 
-            'key' => config('services.oogle_books.key')
-        ]);
-
-        //usar operadores ternrios para verificar si el usuario tiene infiormacion
-        $usuarios = $response->json()['items'] ?? [];
-
-        return view('usuario.home', compact('usuarios'));
-    }
-
-    
-
 }

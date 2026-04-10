@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Auth\Events\Login;
+use App\Listeners\EnviarCorreo;
+use Illuminate\Support\Facades\Event;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Registrar el evento para que el sistema lo escuche
+        Event::listen(Login::class, EnviarCorreo::class);
     }
 }

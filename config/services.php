@@ -35,8 +35,10 @@ return [
         ],
     ],
 
-    'google_books' => [
-        'key' => env('GOOGLE_BOOKS_KEY'),
+    'google' => [
+    'client_id' => env('GOOGLE_CLIENT_ID'),
+    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
 ];

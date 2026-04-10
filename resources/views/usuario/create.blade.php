@@ -9,7 +9,7 @@
     @extends('layouts.app')
     @section('content')
 
-   <h1>Registro de Usuario</h1>
+   <h1>Registro de Alumno</h1>
 
 <form action="{{ route('usuario.store') }}" method="POST">
     @csrf
@@ -31,7 +31,7 @@
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"> <i class="fa-solid fa-lock"></i> </span>
-        <input type="password" name="contrasena" placeholder="Contraseña" required>
+        <input type="password" name="contrasena" placeholder="Matricula" required>
     </div>
 
     <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-floppy-disk"></i> Guardar </button>

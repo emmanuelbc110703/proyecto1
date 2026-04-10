@@ -59,7 +59,7 @@ class AuthController extends Controller
     }
 
     return back()->withErrors([
-        'email' => 'Datos incorrectos',
+        'email' => 'No se pudo iniciar sesión. Verifica tus datos. O create una cuenta nueva' ,
     ])->onlyInput('email');
 }
 

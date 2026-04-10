@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MaestroController;
+use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,7 +14,18 @@ Route::get('/', function () {
 //usar las rutas con los nombres de los metodos del controlador (Protegidos por el inicio de sesion)
 Route::middleware(['auth'])->group(Function (){
 Route::resource('usuario', UsuarioController::class);
+Route::resource('maestro', MaestroController::class);
+Route::resource('user', UserController::class)->except(['index']);
+
 });
+
+Route::get('/admin', [
+    UserController::class, 'index'])
+    ->name('admin-dashboard');
+
+Route::get('/maestros', [
+    MaestroController::class, 'index'
+])->name('maestro.index');
 
 //Ruta para el catalogo de usuarios
 Route::get('/home',[
@@ -60,5 +74,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [
     AuthController::class, 'adminDashboard'
     ])->name('admin-dashboard');
+
+    
 });
+
+Route::get('/auth/google', [
+    GoogleController::class, 'redirect']);
+
+Route::get('/auth/google/callback', [
+    GoogleController::class, 'callback']);
+
 

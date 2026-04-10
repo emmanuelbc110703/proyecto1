@@ -9,14 +9,15 @@
     @extends('layouts.app')
 
     @section('content')
-   <h1>Usuarios Registrados</h1>
+    <center><h1>Registro de Usuarios</h1></center>
+    <center><h3>Registro de Alumnos</h3></center>
 
     <div class="d-flex justify-content-end mb-3">
-        <a href="{{ route('registro') }}" class="btn btn-primary me-3 mb-3">
-        <i class="fa-solid fa-plus"></i> Agregar Tipos de Usuarios
-        </a>
         <a href="{{ route('usuario.create') }}" class="btn btn-success me-3 mb-3">
-        <i class="fa-solid fa-plus"></i> Nuevo Usuario
+        <i class="fa-solid fa-plus"></i> Nuevo Alumno
+        </a>
+        <a href="{{ route('maestro.index') }}" class="btn btn-info me-3 mb-3">
+        <i class="fa-solid fa-user-tie"></i> Consultar Maestros
         </a>
         <form action="{{ route('cerrar') }}" method="POST">
             @csrf
@@ -25,7 +26,7 @@
 
         @if(auth()->user()->is_admin)
         <a href="{{ route('admin-dashboard') }}" class="btn btn-secondary mb-3">  
-        Admin
+        Administrar Usuarios
         </a>
         @endif
 
@@ -65,13 +66,13 @@
                 <button class="btn btn-danger"
                 onclick="return confirm('¿Eliminar el Registro?')">
                 <i class="fa-solid fa-trash"></i></button>
-
             </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+        
 @endsection
 </body>
 </html>
